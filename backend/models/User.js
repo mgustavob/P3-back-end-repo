@@ -1,8 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// User Schema
-const UserSchema = new Schema({
+// Game schema
+let gameSchema = new mongoose.Schema({
+    name: String,
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Author'
+    },
+    screenshot: String,
+    description: String,
+    cohort: String,
+    gameUrl: String
+})
+
+// User schema
+const userSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -15,10 +28,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
-    type: Date,
-    default: Date.now()
-  }
+  favedGames: [gameSchema]
 });
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', userSchema);
