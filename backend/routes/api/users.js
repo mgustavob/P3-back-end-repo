@@ -8,12 +8,11 @@ const passport = require('passport');
 const JWT_SECRET = process.env.JWT_SECRET;
 console.log(process.env);
 // Load User model
-// const User = require('../../models/User');
 const db = require('../../models');
 
 // GET api/users/test (Public)
 router.get('/test', (req, res) => {
-  res.json({ msg: 'User endpoint OK'});
+  res.json({ msg: 'User endpoint lookin\' sweet!'});
 });
 
 // POST api/users/register (Public)

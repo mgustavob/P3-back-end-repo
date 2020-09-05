@@ -18,11 +18,11 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Smile, you are being watch by the Backend Team' });
+  res.status(200).json({ message: 'You checking out my backend?! MY EYES ARE UP HERE!' });
 });
 
 app.use('/api/users', users);
 
 app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
+  console.log(`Scope that backend on port: ${port}`);
 });
