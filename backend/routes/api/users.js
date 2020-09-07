@@ -46,6 +46,7 @@ router.post('/register', (req, res) => {
       });
     }
   })
+  .catch(error =>  console.log(error));
 });
 
 // POST api/users/login (Public)
