@@ -9,6 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 console.log(process.env);
 // Load User model
 const db = require('../../models');
+const User = require('../../models/User')
 
 // GET api/users/test (Public)
 router.get('/test', (req, res) => {
@@ -45,6 +46,7 @@ router.post('/register', (req, res) => {
       });
     }
   })
+  .catch(error =>  console.log(error));
 });
 
 // POST api/users/login (Public)

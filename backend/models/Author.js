@@ -13,4 +13,4 @@ const authorSchema = new mongoose.Schema({
     profilePic: String 
 })
 
-module.exports = Author = mongoose.model('Author', authorSchema); 
+module.exports = mongoose.model('Author', authorSchema); 
