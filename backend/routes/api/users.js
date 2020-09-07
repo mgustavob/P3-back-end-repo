@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const User = require('../../models/User')
 
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
@@ -30,7 +31,7 @@ router.post('/register', (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
-      });
+      })
 
       // Salt and hash the password, then save the user
       bcrypt.genSalt(10, (error, salt) => {
