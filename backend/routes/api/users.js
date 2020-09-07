@@ -18,7 +18,7 @@ router.get('/test', (req, res) => {
 
 // POST api/users/register (Public)
 router.post('/register', (req, res) => {
-  
+
   // Find user by email
   db.User.findOne({ email: req.body.email })
   .then(user => {
