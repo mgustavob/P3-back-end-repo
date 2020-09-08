@@ -17,8 +17,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-<<<<<<< HEAD
-=======
 // <<<<<<< master
 //   favedGames: {
 //     name: String,
@@ -32,16 +30,12 @@ const userSchema = new Schema({
 //     }
 //     },
 // =======
->>>>>>> 141ebed137c4f6b1b85cf069666a6d29bf3c4bbf
   favedGames: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game'
   }]
-<<<<<<< HEAD
-=======
 // >>>>>>> master
 // favedGames: [Game]
->>>>>>> 141ebed137c4f6b1b85cf069666a6d29bf3c4bbf
 });
 
 module.exports = mongoose.model('User', userSchema);

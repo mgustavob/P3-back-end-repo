@@ -14,7 +14,7 @@ const gameSchema = new Schema({
     cohort: String,
     gameUrl: {
         type: String,
-        require: true
+        required: true
     }
 })
 

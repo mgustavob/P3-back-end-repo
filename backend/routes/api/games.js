@@ -19,7 +19,7 @@ router.post('/addgame', (req, res) => {
         if (game) {
             res.json(game)
        } else {
-            const newGame = new Game ({
+            let newGame = new Game ({
             name: req.body.name,
             author: req.body.author,
             gameUrl: req.body.gameUrl
@@ -32,8 +32,9 @@ router.post('/addgame', (req, res) => {
         })
         .catch(err => console.log(err))
         }
-    res.status(200).json(newGame)
-    }).catch(err => res.status(500).json({error: err}))
+        res.status(200)
+    })
+    .catch(err => res.status(500).json({error: err}))
 })
 
 router.get('/current', (req, res) => {
