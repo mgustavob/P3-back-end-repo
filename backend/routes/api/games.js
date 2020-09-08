@@ -38,6 +38,13 @@ router.post('/addgame', (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 })
 
+router.get('/arcade',(req, res)=>{
+    db.Game.find()
+    .then(resp =>{
+        return resp.json()
+    })
+})
+
 router.get('/current', (req, res) => {
     res.json({
         id: req.game.id
