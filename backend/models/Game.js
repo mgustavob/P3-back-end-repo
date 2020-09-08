@@ -1,20 +1,29 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 // Game schema
 const gameSchema = new Schema({
-    name: String,
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Author'
-    },
-    screenshot: String,
-    description: String,
-    cohort: String,
     gameUrl: {
         type: String,
-        require: true
+        required: true
+    },
+    title: String,
+    // author: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     default: 'Anonymous'
+    // },
+    screenshot: {
+        type: String,
+        default: 'screenshot unavalable'
+    },
+    description: {
+        type: String,
+        default: 'none'
+    },
+    cohort: {
+        type: String,
+        default: 'unavailable'
     }
 })
 

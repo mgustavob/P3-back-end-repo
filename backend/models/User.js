@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-
 // User schema
 const userSchema = new Schema({
   name: {
@@ -17,31 +15,27 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-<<<<<<< HEAD
-=======
-// <<<<<<< master
-//   favedGames: {
-//     name: String,
-//     author: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: 'Author',
-//         screenshot: String,
-//         description: String,
-//         cohort: String,
-//         gameUrl: String
-//     }
-//     },
-// =======
->>>>>>> 141ebed137c4f6b1b85cf069666a6d29bf3c4bbf
+
   favedGames: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game'
-  }]
-<<<<<<< HEAD
-=======
-// >>>>>>> master
-// favedGames: [Game]
->>>>>>> 141ebed137c4f6b1b85cf069666a6d29bf3c4bbf
-});
+  }],
+  linkedIn: {
+    type: String,
+    default: 'Anoymous'
+  },
+  github: {
+    type: String,
+    default: 'Anonymous'
+  },
+  profilePic: {
+    type: String,
+    default: 'no photo available'
+  },
+  portfolioUrl: {
+    type: String,
+    default: 'Anonymous'
+  }
+                              })
 
 module.exports = mongoose.model('User', userSchema);
