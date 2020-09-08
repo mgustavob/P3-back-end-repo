@@ -6,8 +6,6 @@ const gameSchema = new Schema({
     gameUrl: {
         type: String,
         required: true
-<<<<<<< HEAD
-=======
     },
     title: String,
     // author: {
@@ -26,7 +24,6 @@ const gameSchema = new Schema({
     cohort: {
         type: String,
         default: 'unavailable'
->>>>>>> 0bee14e0530813d25e33ab669826e18b83c03394
     }
 })
 

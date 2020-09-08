@@ -18,13 +18,6 @@ router.post('/addgame', (req, res) => {
         if (game) {
             res.json(game)
        } else {
-<<<<<<< HEAD
-            let newGame = new Game ({
-            name: req.body.name,
-            author: req.body.author,
-            gameUrl: req.body.gameUrl
-        })
-=======
           let newGame = new Game ({
             gameUrl: req.body.gameUrl,
             title: req.body.name,
@@ -33,7 +26,6 @@ router.post('/addgame', (req, res) => {
             cohort: req.body.cohort
             // author: req.body.author,
           })
->>>>>>> 0bee14e0530813d25e33ab669826e18b83c03394
         newGame.save()
         .then(createdGame => {
             console.log("New game Created")
@@ -44,6 +36,15 @@ router.post('/addgame', (req, res) => {
         res.status(200)
     })
     .catch(err => res.status(500).json({error: err}))
+})
+
+router.get('/arcade',(req, res)=>{
+    db.Game.find()
+    .then(response =>{
+        console.log(response)
+        return res.json(response)
+    })
+    .catch(err => console.log(err))
 })
 
 router.get('/current', (req, res) => {
