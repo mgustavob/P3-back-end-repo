@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
+
 // User schema
 const userSchema = new Schema({
   name: {
@@ -28,12 +29,13 @@ const userSchema = new Schema({
 //         gameUrl: String
 //     }
 //     },
-
+// =======
   favedGames: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game'
   }]
-
+// >>>>>>> master
+// favedGames: [Game]
 });
 
 module.exports = mongoose.model('User', userSchema);
