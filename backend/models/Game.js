@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 // Game schema
-const gameSchema = new mongoose.Schema({
+const gameSchema = new Schema({
     name: String,
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -15,4 +15,4 @@ const gameSchema = new mongoose.Schema({
     gameUrl: String
 })
 
-module.exports = mongoose.model('Game', gameSchema); 
+module.exports = mongoose.model('Game', gameSchema);
