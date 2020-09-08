@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 // Game schema
-const gameSchema = new mongoose.Schema({
+const gameSchema = new Schema({
     name: String,
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -12,7 +11,10 @@ const gameSchema = new mongoose.Schema({
     screenshot: String,
     description: String,
     cohort: String,
-    gameUrl: String
+    gameUrl: {
+        type: String,
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Game', gameSchema); 

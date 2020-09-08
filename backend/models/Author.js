@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 
 const authorSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     userId: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
