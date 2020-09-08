@@ -11,6 +11,7 @@ console.log(process.env);
 const db = require('../../models');
 const User = require('../../models/User')
 
+
 // GET api/users/test (Public)
 router.get('/test', (req, res) => {
   res.json({ msg: 'User endpoint lookin\' sweet!'});
@@ -18,7 +19,7 @@ router.get('/test', (req, res) => {
 
 // POST api/users/register (Public)
 router.post('/register', (req, res) => {
-  
+
   // Find user by email
   db.User.findOne({ email: req.body.email })
   .then(user => {
@@ -31,7 +32,7 @@ router.post('/register', (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
-      });
+      })
 
       // Salt and hash the password, then save the user
       bcrypt.genSalt(10, (error, salt) => {

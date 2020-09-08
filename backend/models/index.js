@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Mongo connection
 console.log(process.env.MONGO_URI);
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect('mongodb://localhost:27017/GArcadeDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: true
@@ -23,3 +23,5 @@ db.on('error', (error) => {
 });
 
 module.exports.User = require('./User');
+module.exports.Game = require('./Game');
+module.exports.Author = require('./Author');
