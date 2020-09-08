@@ -12,7 +12,10 @@ const gameSchema = new Schema({
     screenshot: String,
     description: String,
     cohort: String,
-    gameUrl: String
+    gameUrl: {
+        type: String,
+        require: true
+    }
 })
 
 module.exports = mongoose.model('Game', gameSchema);

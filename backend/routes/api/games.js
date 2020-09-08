@@ -1,29 +1,35 @@
 const express = require('express');
 const db = require('../../models');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 const Game = require('../../models/Game')
 
 
 
 router.get('/test', (req, res)=> {
-    res.json({msg: 'Gae enpoint Ok'})
+    res.json({msg: 'Game endpoint Ok'})
 });
 
 // POST new game
-router.post('/', (req, res) => {
+// passport.authenticate('jwt', { session: false })
+router.post('/addgame', (req, res) => {
     db.Game.findOne({ gameUrl: req.body.gameUrl })
     .then(game => {
         if (game) {
-            res.send(':dart:', game)
+            res.json(game)
        } else {
             const newGame = new Game ({
             name: req.body.name,
             author: req.body.author,
             gameUrl: req.body.gameUrl
         })
-        console.log("New user Created")
         newGame.save()
-        .then(createdGame => res.json(createdGame))
+        .then(createdGame => {
+            console.log("New game Created")
+            return res.json(createdGame)
+
+        })
         .catch(err => console.log(err))
         }
     res.status(200).json(newGame)
