@@ -28,12 +28,12 @@ const userSchema = new Schema({
 //         gameUrl: String
 //     }
 //     },
-// =======
-//   favedGames: [{
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'Game'
-//   }]
-// >>>>>>> master
+
+  favedGames: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Game'
+  }]
+
 });
 
 module.exports = mongoose.model('User', userSchema);
