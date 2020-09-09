@@ -4,21 +4,9 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const Game = require('../../models/Game')
-
-
-
 router.get('/test', (req, res)=> {
     res.json({msg: 'Game endpoint Ok'})
 });
-
-// GET favorite games
-router.get('/arcade',(req, res)=>{
-  db.Game.find()
-  .then(response =>{
-      return res.json(response)
-  })
-})
-
 // POST new game
 router.post('/addgame', (req, res) => {
     db.Game.findOne({ gameUrl: req.body.gameUrl })
@@ -44,14 +32,37 @@ router.post('/addgame', (req, res) => {
         res.status(200)
     })
     .catch(err => res.status(500).json({error: err}))
+});
+// GET all games
+router.get('/arcade',(req, res)=>{
+  db.Game.find()
+  .then(response =>{
+      return res.json(response)
+  })
+});
+// GET detail
+router.get('/detail/:id', (req, res) => {
+  db.Game.findById(req.params.id)
+  .then(game => {
+    res.status(200).json(game)
+  }).catch(err => res.status(500).json({error: err}))
+});
+// PUT update games
+router.put('/edit/:id', (req, res) => {
+  db.Game.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(updatedGame => {
+    console.log(updatedGame)
+    res.status(200).json(updatedGame)
+  })
+});
+// DELETE games
+router.delete('/delete/:id', (req, res) => {
+  db.Game.findByIdAndDelete(req.params.id).then(removed => {
+    res.status(200).json({ message: 'Gave ' + removed + ' the BOOT!👢'})
+  })
 })
-
-
 router.get('/current', (req, res) => {
     res.json({
         id: req.game.id
     })
-})
-
-
+});
 module.exports = router;
