@@ -20,7 +20,7 @@ router.post('/addgame', (req, res) => {
        } else {
           let newGame = new Game ({
             gameUrl: req.body.gameUrl,
-            title: req.body.name,
+            title: req.body.title,
             screenshot: req.body.screenshot,
             description: req.body.description,
             cohort: req.body.cohort
