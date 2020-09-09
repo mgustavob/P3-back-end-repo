@@ -7,15 +7,17 @@ const gameSchema = new Schema({
         type: String,
         required: true
     },
-    title: String,
-    // author: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     default: 'Anonymous'
-    // },
+    title: {
+        type: String,
+        required:true
+    },
+    author: {
+        type: String,
+        default: 'Anonymous'
+    },
     screenshot: {
         type: String,
-        default: 'screenshot unavalable'
+        default: 'screenshot unavailable'
     },
     description: {
         type: String,
@@ -24,6 +26,10 @@ const gameSchema = new Schema({
     cohort: {
         type: String,
         default: 'unavailable'
+    },
+    faved: {
+        type: Number,
+        default: 0
     }
 })
 

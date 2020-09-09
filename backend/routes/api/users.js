@@ -9,7 +9,6 @@ const JWT_SECRET = process.env.JWT_SECRET;
 console.log(process.env);
 // Load User model
 const db = require('../../models');
-const User = require('../../models/User')
 
 
 // GET api/users/test (Public)
@@ -28,7 +27,7 @@ router.post('/register', (req, res) => {
       return res.status(400).json({ msg: 'Email already exists'});
     } else {
       // Create a new user
-      const newUser = new User({
+      let newUser = new db.User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,

@@ -11,6 +11,14 @@ router.get('/test', (req, res)=> {
     res.json({msg: 'Game endpoint Ok'})
 });
 
+// GET favorite games
+router.get('/arcade',(req, res)=>{
+  db.Game.find()
+  .then(response =>{
+      return res.json(response)
+  })
+})
+
 // POST new game
 router.post('/addgame', (req, res) => {
     db.Game.findOne({ gameUrl: req.body.gameUrl })
@@ -20,11 +28,11 @@ router.post('/addgame', (req, res) => {
        } else {
           let newGame = new Game ({
             gameUrl: req.body.gameUrl,
-            title: req.body.name,
+            title: req.body.title,
             screenshot: req.body.screenshot,
             description: req.body.description,
-            cohort: req.body.cohort
-            // author: req.body.author,
+            cohort: req.body.cohort,
+            author: req.body.author
           })
         newGame.save()
         .then(createdGame => {
@@ -38,6 +46,7 @@ router.post('/addgame', (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 })
 
+<<<<<<< HEAD
 router.get('/arcade',(req, res)=>{
     db.Game.find()
     .then(response =>{
@@ -46,6 +55,8 @@ router.get('/arcade',(req, res)=>{
     })
     .catch(err => console.log(err))
 })
+=======
+>>>>>>> 5479006f3a821681c6a7001d5fd6df06276d125b
 
 router.get('/current', (req, res) => {
     res.json({
