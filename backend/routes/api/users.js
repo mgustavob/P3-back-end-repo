@@ -27,10 +27,14 @@ router.post('/register', (req, res) => {
       return res.status(400).json({ msg: 'Email already exists'});
     } else {
       // Create a new user
-      const newUser = new User({
+      let newUser = new db.User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        linkedIn: req.body.linkedIn,
+        github: req.body.github,
+        profilePic: req.body.profilePic,
+        portfolioUrl: req.body.portfolioUrl
       })
 
       // Salt and hash the password, then save the user

@@ -11,19 +11,27 @@ router.get('/test', (req, res)=> {
     res.json({msg: 'Game endpoint Ok'})
 });
 
+router.get('/arcade',(req, res)=>
+{ db.Game.find() 
+    .then(response =>{ 
+    return res.json(response)
+ })
+ })
 // POST new game
-// passport.authenticate('jwt', { session: false })
 router.post('/addgame', (req, res) => {
     db.Game.findOne({ gameUrl: req.body.gameUrl })
     .then(game => {
         if (game) {
             res.json(game)
        } else {
-            let newGame = new Game ({
-            name: req.body.name,
-            author: req.body.author,
-            gameUrl: req.body.gameUrl
-        })
+          let newGame = new Game ({
+            gameUrl: req.body.gameUrl,
+            title: req.body.title,
+            screenshot: req.body.screenshot,
+            description: req.body.description,
+            cohort: req.body.cohort
+            // author: req.body.author,
+          })
         newGame.save()
         .then(createdGame => {
             console.log("New game Created")
@@ -35,6 +43,7 @@ router.post('/addgame', (req, res) => {
     })
     .catch(err => res.status(500).json({error: err}))
 })
+
 
 router.get('/current', (req, res) => {
     res.json({
