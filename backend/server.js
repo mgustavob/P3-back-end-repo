@@ -25,6 +25,9 @@ app.get('/', (req, res) => {
 app.use('/api/users', users);
 app.use('/api/games', games);
 
+
+
 app.listen(port, () => {
   console.log(`Scope that backend on port: ${port}`);
+  
 });
