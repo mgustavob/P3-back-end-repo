@@ -11,12 +11,14 @@ router.get('/test', (req, res)=> {
     res.json({msg: 'Game endpoint Ok'})
 });
 
-router.get('/arcade',(req, res)=>
-{ db.Game.find() 
-    .then(response =>{ 
-    return res.json(response)
- })
- })
+// GET favorite games
+router.get('/arcade',(req, res)=>{
+  db.Game.find()
+  .then(response =>{
+      return res.json(response)
+  })
+})
+
 // POST new game
 router.post('/addgame', (req, res) => {
     db.Game.findOne({ gameUrl: req.body.gameUrl })
@@ -29,8 +31,8 @@ router.post('/addgame', (req, res) => {
             title: req.body.title,
             screenshot: req.body.screenshot,
             description: req.body.description,
-            cohort: req.body.cohort
-            // author: req.body.author,
+            cohort: req.body.cohort,
+            author: req.body.author
           })
         newGame.save()
         .then(createdGame => {
