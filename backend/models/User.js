@@ -15,6 +15,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+
   favedGames: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game'
@@ -35,6 +36,6 @@ const userSchema = new Schema({
     type: String,
     default: 'Anonymous'
   }
-});
+                              })
 
 module.exports = mongoose.model('User', userSchema);
