@@ -54,6 +54,8 @@ router.put('/edit/:id', (req, res) => {
     res.status(200).json(updatedGame)
   })
 });
+
+
 // DELETE games
 router.delete('/delete/:id', (req, res) => {
   db.Game.findByIdAndDelete(req.params.id).then(removed => {
