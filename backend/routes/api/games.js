@@ -46,17 +46,6 @@ router.post('/addgame', (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 })
 
-<<<<<<< HEAD
-router.get('/arcade',(req, res)=>{
-    db.Game.find()
-    .then(response =>{
-        console.log(response)
-        return res.json(response)
-    })
-    .catch(err => console.log(err))
-})
-=======
->>>>>>> 5479006f3a821681c6a7001d5fd6df06276d125b
 
 router.get('/current', (req, res) => {
     res.json({
