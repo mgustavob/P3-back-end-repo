@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 console.log(process.env);
 // Load User model
 const db = require('../../models');
-const { route } = require('./games');
+// const { route } = require('./games');
 
 
 // GET api/users/test (Public)
@@ -74,7 +74,6 @@ router.post('/login', (req, res) => {
             id: user.id,
             name: user.name,
             email: user.email,
-            favedGames: user.favedGames
           };
 
           // Sign token
@@ -118,13 +117,10 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 // ADD GAME TO FAVORITES
 router.post('/favorites/:id', (req, res) => {
   let userId = req.body.parameters.userId
-  // let gameId = req.body.params.gameId
   let currentGame = req.body.parameters.currentGame
   
-  // maybe it would make more sense to hold the whole game object ? 
   console.log('BACKEND LOOOOGIN', currentGame);
   db.User.findByIdAndUpdate(userId,
-    // THIS NEEDS TO BE CHANGE TO TITLE TODO
     {$addToSet: {favedGames: currentGame}}, {new: true})
   .then(response => {
     console.log('HERES THE RESPONSE FROM POST', response)
