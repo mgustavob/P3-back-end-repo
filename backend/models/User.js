@@ -22,7 +22,7 @@ const userSchema = new Schema({
   }],
   linkedIn: {
     type: String,
-    default: 'Anoymous'
+    default: 'Anonymous'
   },
   github: {
     type: String,
@@ -36,6 +36,6 @@ const userSchema = new Schema({
     type: String,
     default: 'Anonymous'
   }
-                              })
+})
 
 module.exports = mongoose.model('User', userSchema);

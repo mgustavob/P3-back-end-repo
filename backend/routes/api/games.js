@@ -4,9 +4,11 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const Game = require('../../models/Game')
+
 router.get('/test', (req, res)=> {
     res.json({msg: 'Game endpoint Ok'})
 });
+
 // POST new game
 router.post('/addgame', (req, res) => {
     db.Game.findOne({ gameUrl: req.body.gameUrl })
@@ -33,6 +35,7 @@ router.post('/addgame', (req, res) => {
     })
     .catch(err => res.status(500).json({error: err}))
 });
+
 // GET all games
 router.get('/arcade',(req, res)=>{
   db.Game.find()
@@ -40,6 +43,7 @@ router.get('/arcade',(req, res)=>{
       return res.json(response)
   })
 });
+
 // GET detail
 router.get('/detail/:id', (req, res) => {
   db.Game.findById(req.params.id)
@@ -47,6 +51,7 @@ router.get('/detail/:id', (req, res) => {
     res.status(200).json(game)
   }).catch(err => res.status(500).json({error: err}))
 });
+
 // PUT update games
 router.put('/edit/:id', (req, res) => {
   db.Game.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(updatedGame => {
@@ -54,6 +59,7 @@ router.put('/edit/:id', (req, res) => {
     res.status(200).json(updatedGame)
   })
 });
+
 // DELETE games
 router.delete('/delete/:id', (req, res) => {
   db.Game.findByIdAndDelete(req.params.id).then(removed => {
@@ -61,12 +67,20 @@ router.delete('/delete/:id', (req, res) => {
   })
 })
 
+<<<<<<< HEAD
 router.get('/:id', (req, res) => {
     db.Game.findById(req.params.id)
     .then(response => {
         res.json(response)
         console.log('BACKEND RESPONSE', response)
+=======
+router.get('/current', (req, res) => {
+    res.json({
+        id: req.game.id
+>>>>>>> b4df5228623a763ea8df5e98c97446c0d1e3e009
     })
     .catch(err => console.log('COULDNT GET FROM DATABASE', err))  
 });
+
+
 module.exports = router;
