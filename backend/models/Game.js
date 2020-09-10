@@ -27,7 +27,6 @@ const authorSchema = new Schema({
     }
 })
 
-
 const gameSchema = new Schema({
     gameUrl: {
         type: String,
