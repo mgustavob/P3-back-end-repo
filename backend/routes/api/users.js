@@ -115,16 +115,28 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
-// router.put('/favorites/:id', (req, res) => {
-//   console.log(req);
-//   // db.User.findById()
+// router.post('/favorites/:id', (req, res) => {
+//   res.json({})
+//   // db.Game.findByIdAndUpdate(req.params.id, {faved: faved++})
+//   // .then(favedCreated => {
+//   //   // db.User.findByIdAndUpdate()
+//   //   console.log(favedCreated)
+//   // }) 
 // })
 
-router.get('/favorites/:id', (req, res) => {
-  // console.log('FAVORITES ROUTE HIT');
-  db.User.findById(req.params.id)
-  .then(user => {
-    res.status(200).json({user})
+router.post('/favorites/:id', (req, res) => {
+  console.log('BACKEND LOOOOGIN', req.body);
+  // db.User.findById(req.body.params.userId)
+  // .then(user => {
+  //   user.update({})
+    
+  // })
+  // .catch(err => console.log('fuck EVERY single computer', err))
+  db.User.findByIdAndUpdate(req.body.params.userId,
+    {$push: {favedGames: req.body.params.gameId}})
+  .then(response => {
+    console.log('HERES THE RESPONSE FROM POST', response)
+    res.status(200).json({response})
   })
   .catch(err => console.log('ERROR IN BACK END', err))
 })
