@@ -129,4 +129,18 @@ router.post('/favorites/:id', (req, res) => {
   .catch(err => console.log('ERROR IN BACK END', err))
 })
 
+// REMOVE game from faves (not sure this is working)
+router.post('/removeFave/:id', (req,res) => {
+  let userId = req.body.params.userId
+  let gameId = req.body.params.gameId
+  console.log('BACKEND LOOOOGIN', req.body);
+  db.User.findByIdAndUpdate(userId,
+    {$pull: {favedGames: gameId}})
+  .then(response => {
+    console.log('HERES THE RESPONSE FROM POST', response)
+    res.status(200).json({response})
+  })
+  .catch(err => console.log('ERROR IN BACK END', err))
+})
+
 module.exports = router;

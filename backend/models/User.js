@@ -15,7 +15,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-
   favedGames: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game'
@@ -35,6 +34,12 @@ const userSchema = new Schema({
   portfolioUrl: {
     type: String,
     default: 'Anonymous'
+  },
+  bio: {
+    type: String,
+    minlength: 1,
+    maxlength: 151,
+    default: 'N/A'
   }
 })
 
