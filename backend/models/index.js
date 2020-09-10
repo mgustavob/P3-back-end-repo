@@ -6,7 +6,7 @@ console.log(process.env.MONGO_URI);
 mongoose.connect('mongodb://localhost:27017/GArcadeDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: true
+  useFindAndModify: false
 });
 
 // Mongoose connection object
