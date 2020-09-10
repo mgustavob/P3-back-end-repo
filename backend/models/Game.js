@@ -10,10 +10,7 @@ const gameSchema = new Schema({
         type: String,
         required:true
     },
-    author: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
+    author: String,
     screenshot: {
         type: String,
         default: 'screenshot unavailable'

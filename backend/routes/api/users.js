@@ -129,8 +129,24 @@ router.post('/favorites/:id', (req, res) => {
   .catch(err => console.log('ERROR IN BACK END', err))
 })
 
+// GET one user's object
+router.get('/profile/:id', (req,res) => {
+  db.User.findById(req.params.id)
+  .then(user => {
+    res.status(200).json(user)
+  })
+})
+
+// GET one user's faved games
+router.get('/faves/:id', (req,res) => {
+  db.User.findById(req.params.id)
+  .then(user => {
+    res.status(200).json(user.favedGames)
+  })
+})
+
 // REMOVE game from faves (not sure this is working)
-router.post('/removeFave/:id', (req,res) => {
+router.put('/unfave/:id', (req,res) => {
   let userId = req.body.params.userId
   let gameId = req.body.params.gameId
   console.log('BACKEND LOOOOGIN', req.body);
