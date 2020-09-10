@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const Game = require('../../models/Game')
 
-
-
 router.get('/test', (req, res)=> {
     res.json({msg: 'Game endpoint Ok'})
 });
