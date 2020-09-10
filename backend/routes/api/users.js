@@ -74,7 +74,8 @@ router.post('/login', (req, res) => {
           const payload = {
             id: user.id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            faves: user.favedGames
           };
 
           // Sign token
@@ -118,15 +119,20 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 // ADD GAME TO FAVORITES
 router.post('/favorites/:id', (req, res) => {
   let userId = req.body.params.userId
-  let gameId = req.body.params.gameId
+  // maybe it would make more sense to hold the whole game object ? 
+  // let gameId = req.body.params.gameId
+  let currentGame = req.body.params.currentGame
   console.log('BACKEND LOOOOGIN', req.body);
   db.User.findByIdAndUpdate(userId,
-    {$addToSet: {favedGames: gameId}})
+    {$addToSet: {favedGames: currentGame}})
   .then(response => {
+    
     console.log('HERES THE RESPONSE FROM POST', response)
     res.status(200).json({response})
   })
   .catch(err => console.log('ERROR IN BACK END', err))
 })
+
+// TODO - write put route to remove a user favorite
 
 module.exports = router;
