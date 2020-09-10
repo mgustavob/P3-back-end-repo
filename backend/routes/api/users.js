@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -75,7 +74,7 @@ router.post('/login', (req, res) => {
             id: user.id,
             name: user.name,
             email: user.email,
-            faves: user.favedGames
+            favedGames: user.favedGames
           };
 
           // Sign token
@@ -118,21 +117,30 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 
 // ADD GAME TO FAVORITES
 router.post('/favorites/:id', (req, res) => {
-  let userId = req.body.params.userId
-  // maybe it would make more sense to hold the whole game object ? 
+  let userId = req.body.parameters.userId
   // let gameId = req.body.params.gameId
-  let currentGame = req.body.params.currentGame
-  console.log('BACKEND LOOOOGIN', req.body);
+  let currentGame = req.body.parameters.currentGame
+  
+  // maybe it would make more sense to hold the whole game object ? 
+  console.log('BACKEND LOOOOGIN', currentGame);
   db.User.findByIdAndUpdate(userId,
-    {$addToSet: {favedGames: currentGame}})
+    // THIS NEEDS TO BE CHANGE TO TITLE TODO
+    {$addToSet: {favedGames: currentGame}}, {new: true})
   .then(response => {
-    
     console.log('HERES THE RESPONSE FROM POST', response)
     res.status(200).json({response})
   })
   .catch(err => console.log('ERROR IN BACK END', err))
 })
 
-// TODO - write put route to remove a user favorite
+// GET one user's faves
+router.get('/profile/:id', (req,res) => {
+  db.User.findById(req.params.id)
+  .then(user => {
+    res.status(200).json(user)
+  })
+  .catch(err => console.log('BAD RESPONSE'))
+})
+
 
 module.exports = router;
