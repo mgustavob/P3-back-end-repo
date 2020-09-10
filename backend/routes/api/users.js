@@ -115,28 +115,13 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
-// router.post('/favorites/:id', (req, res) => {
-//   res.json({})
-//   // db.Game.findByIdAndUpdate(req.params.id, {faved: faved++})
-//   // .then(favedCreated => {
-//   //   // db.User.findByIdAndUpdate()
-//   //   console.log(favedCreated)
-//   // }) 
-// })
-
+// ADD GAME TO FAVORITES
 router.post('/favorites/:id', (req, res) => {
   let userId = req.body.params.userId
   let gameId = req.body.params.gameId
   console.log('BACKEND LOOOOGIN', req.body);
-  // db.User.findById(req.body.params.userId)
-  // .then(user => {
-  //   user.update({})
-    
-  // })
-  // .catch(err => console.log('fuck EVERY single computer', err))
   db.User.findByIdAndUpdate(userId,
-    // { $cond:{if: {gameId} }})
-    {$addToSet: {favedGames: req.body.params.gameId}})
+    {$addToSet: {favedGames: gameId}})
   .then(response => {
     console.log('HERES THE RESPONSE FROM POST', response)
     res.status(200).json({response})
