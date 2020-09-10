@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 console.log(process.env);
 // Load User model
 const db = require('../../models');
-const User = require('../../models/User')
+const { route } = require('./games');
 
 
 // GET api/users/test (Public)
@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
       return res.status(400).json({ msg: 'Email already exists'});
     } else {
       // Create a new user
-      const newUser = new User({
+      let newUser = new db.User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
@@ -88,6 +88,23 @@ router.post('/login', (req, res) => {
     }
   });
 });
+
+//newest route edit profile by ID
+router.put('/editProfile/:id', (req, res)=>{
+  db.User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(updatedProfile =>{
+    console.log(updatedProfile)
+    res.status(200).json(updatedProfile);
+  })
+  .catch(err => console.log(err))  
+})
+
+// DELETE user
+router.delete('/delete/:id', (req,res) => {
+  db.User.findByIdAndDelete(req.params.id).then(removed => {
+    res.status(200).json({message: 'Sayonara and happy trails ' + removed + '!'})
+  })
+})
 
 // GET api/users/current (Private)
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {

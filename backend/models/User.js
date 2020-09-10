@@ -15,10 +15,27 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+
   favedGames: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Game'
-  }]
-});
+  }],
+  linkedIn: {
+    type: String,
+    default: 'Anonymous'
+  },
+  github: {
+    type: String,
+    default: 'Anonymous'
+  },
+  profilePic: {
+    type: String,
+    default: 'no photo available'
+  },
+  portfolioUrl: {
+    type: String,
+    default: 'Anonymous'
+  }
+})
 
 module.exports = mongoose.model('User', userSchema);

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const authorSchema = new Schema({
-    name: req.body.name,
+    name: String,
     linkedIn: {
         type: String,
         default: 'N/A'
@@ -27,7 +27,6 @@ const authorSchema = new Schema({
     }
 })
 
-// Game schema
 const gameSchema = new Schema({
     gameUrl: {
         type: String,
