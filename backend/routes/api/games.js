@@ -67,10 +67,13 @@ router.delete('/delete/:id', (req, res) => {
   })
 })
 
-router.get('/current', (req, res) => {
-    res.json({
-        id: req.game.id
+router.get('/:id', (req, res) => {
+    db.Game.findById(req.params.id)
+    .then(response => {
+        res.json(response)
+        console.log('BACKEND RESPONSE', response)
     })
+    .catch(err => console.log('COULDNT GET FROM DATABASE', err))  
 });
 
 
