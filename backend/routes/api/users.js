@@ -9,6 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 console.log(process.env);
 // Load User model
 const db = require('../../models');
+const { route } = require('./games');
 
 
 // GET api/users/test (Public)
@@ -88,6 +89,17 @@ router.post('/login', (req, res) => {
   });
 });
 
+//newest route edit profile by ID
+router.put('/editProfile/:id', (req, res)=>{
+  db.User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(updatedProfile =>{
+    console.log(updatedProfile)
+    res.status(200).json(updatedProfile);
+  })
+  .catch(err => console.log(err))
+
+  
+})
 // GET api/users/current (Private)
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
