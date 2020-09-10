@@ -115,4 +115,18 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
+// router.put('/favorites/:id', (req, res) => {
+//   console.log(req);
+//   // db.User.findById()
+// })
+
+router.get('/favorites/:id', (req, res) => {
+  // console.log('FAVORITES ROUTE HIT');
+  db.User.findById(req.params.id)
+  .then(user => {
+    res.status(200).json({user})
+  })
+  .catch(err => console.log('ERROR IN BACK END', err))
+})
+
 module.exports = router;
