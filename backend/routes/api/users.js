@@ -96,10 +96,16 @@ router.put('/editProfile/:id', (req, res)=>{
     console.log(updatedProfile)
     res.status(200).json(updatedProfile);
   })
-  .catch(err => console.log(err))
-
-  
+  .catch(err => console.log(err))  
 })
+
+// DELETE user
+router.delete('/delete/:id', (req,res) => {
+  db.User.findByIdAndDelete(req.params.id).then(removed => {
+    res.status(200).json({message: 'Sayonara and happy trails ' + removed + '!'})
+  })
+})
+
 // GET api/users/current (Private)
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
