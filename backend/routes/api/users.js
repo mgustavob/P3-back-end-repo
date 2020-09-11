@@ -96,7 +96,7 @@ router.put('/editProfile/:id', (req, res)=>{
     console.log(updatedProfile)
     res.status(200).json(updatedProfile);
   })
-  .catch(err => console.log(err))  
+  .catch(err => console.log(err))
 })
 
 // DELETE user
@@ -120,8 +120,8 @@ router.post('/favorites/:id', (req, res) => {
   let userId = req.body.parameters.userId
   // let gameId = req.body.params.gameId
   let currentGame = req.body.parameters.currentGame
-  
-  // maybe it would make more sense to hold the whole game object ? 
+
+  // maybe it would make more sense to hold the whole game object ?
   console.log('BACKEND LOOOOGIN', currentGame);
   db.User.findByIdAndUpdate(userId,
     // THIS NEEDS TO BE CHANGE TO TITLE TODO
@@ -145,8 +145,6 @@ router.get('/profile/:id', (req,res) => {
   .catch(err => console.log('BAD RESPONSE'))
 })
 
-=======
-})
 
 // GET one user's faved games
 router.get('/faves/:id', (req,res) => {

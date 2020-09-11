@@ -73,7 +73,7 @@ router.get('/:id', (req, res) => {
         res.json(response)
         console.log('BACKEND RESPONSE', response)
     })
-    .catch(err => console.log('COULDNT GET FROM DATABASE', err))  
+    .catch(err => console.log('COULDNT GET FROM DATABASE', err))
 });
 
 
