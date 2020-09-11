@@ -145,8 +145,6 @@ router.get('/profile/:id', (req,res) => {
   .catch(err => console.log('BAD RESPONSE'))
 })
 
-=======
-})
 
 // GET one user's faved games
 router.get('/faves/:id', (req,res) => {
