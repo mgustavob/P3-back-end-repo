@@ -1,32 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const authorSchema = new Schema({
-    name: String,
-    linkedIn: {
-        type: String,
-        default: 'N/A'
-    },
-    github: {
-        type: String,
-        default: 'N/A'
-    },
-    profilePic: {
-        type: String,
-        default: 'N/A'
-    },
-    portfolioUrl: {
-        type: String,
-        default: 'N/A'
-    },
-    bio: {
-        type: String,
-        minlength: 1,
-        maxlength: 151,
-        default: 'N/A'
-    }
-})
-
 const gameSchema = new Schema({
     gameUrl: {
         type: String,
@@ -36,7 +10,7 @@ const gameSchema = new Schema({
         type: String,
         required:true
     },
-    author: [authorSchema],
+    author: String,
     screenshot: {
         type: String,
         default: 'screenshot unavailable'
