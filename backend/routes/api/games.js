@@ -52,6 +52,9 @@ router.get('/detail/:id', (req, res) => {
   }).catch(err => res.status(500).json({error: err}))
 });
 
+
+
+
 // PUT update games
 router.put('/edit/:id', (req, res) => {
   db.Game.findByIdAndUpdate(req.params.id, req.body, {new: true}).then(updatedGame => {
