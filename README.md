@@ -63,9 +63,9 @@ This is the layout of what we originally wanted for each sprint and an insight i
     - Sprint Four turned into a stretch of Sprint Three. We were still having issues, primarily with the favorites functionality, so we decided to forego our retch goals and focus on the main components of the app.
 
 ### The Wireframes
-![gamepage](backend/assets/gamepage.png?raw=true)
-![hiscore](backend/assets/hiscoreindex.png?raw=true)
-![landing](backend/assets/landingpage.png?raw=true)
+![gamepage](assets/gamepage.png?raw=true)
+![hiscore](assets/hiscoreindex.png?raw=true)
+![landing](assets/landingpage.png?raw=true)
 
 
 ### The Challenges
