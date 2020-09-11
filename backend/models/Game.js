@@ -36,7 +36,7 @@ const gameSchema = new Schema({
         type: String,
         required:true
     },
-    author: [authorSchema],
+    author: String,
     screenshot: {
         type: String,
         default: 'screenshot unavailable'
