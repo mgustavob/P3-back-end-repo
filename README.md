@@ -5,6 +5,9 @@
 
 Please note: This is a decoupled app. For the full experience, it can be used in conjunction with the client-side repo [here.](https://github.com/Lizzwest/P3-front-end-repo).
 
+## The site
+![Garcade](frontend/public/assets/arcade.png?raw=true)
+
 ## Instructions to install
 
 - Fork and clone this repo. 
