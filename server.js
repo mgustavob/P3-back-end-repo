@@ -5,8 +5,8 @@ const cors = require('cors');
 const port = process.env.PORT || 8000;
 const passport = require('passport');
 
-const users = require('./routes/api/users');
-const games = require('./routes/api/games');
+// const users = require('./routes/api/users');
+// const games = require('./routes/api/games');
 
 // Middleware
 app.use(cors());
@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'You checking out my backend?! MY EYES ARE UP HERE!' });
 });
 
-app.use('/api/users', users);
-app.use('/api/games', games);
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/games', require('./routes/api/games'));
 
 
 
