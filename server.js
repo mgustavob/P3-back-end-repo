@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'You checking out my backend?! MY EYES ARE UP HERE!' });
 });
 
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/games', require('./routes/api/games'));
+app.use('/api/users', require('/routes/api/users'));
+app.use('/api/games', require("./routes/api/games"));
 
 
 
