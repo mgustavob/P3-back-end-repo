@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = process.env.PORT || 8000;
+// const port = process.env.PORT || 8000;
 const passport = require('passport');
 
 // const users = require('./routes/api/users');
@@ -27,7 +27,7 @@ app.use('/api/games', require('./routes/api/games'));
 
 
 
-app.listen(port, () => {
-  console.log(`Scope that backend on port: ${port}`);
-  
-});
+app.listen(process.env.PORT || 8000, ()=>{
+  console.log(`☕️ You're listening to the smooth sounds of port
+  ${process.env.PORT || 8000} 🦾🤖, clean servers go brrr`)
+})
